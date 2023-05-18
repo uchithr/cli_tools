@@ -1,0 +1,175 @@
+	/root/var - contains linux log files
+	
+	psaux
+	top
+	htop
+	pkill -KILL -U samf
+	
+	fdisk -l
+	lsblk -f
+	watch -sh /source
+	
+	tree --du -h | grep G]
+	
+	
+	
+	
+	
+	
+	
+# SSH WITH KEYFILE	
+ssh -i ssh-key-2023-02-22.key opc@158.101.196.84
+	
+# FOLDER FIND	
+find ~ -type d -name "Documents"
+	
+# FIND  FILE TYPE	
+find . -type f -name "*.txt"
+	
+# FIND AND COPY	
+find -name  myfile.mp3 -exec cp  {}  /home/sam  \;
+	
+## FIND AND COPY BELOW 200M FILES	
+find -type f -size -200M -exec cp {} /mnt/sdf2/1/X_pks \;
+find /etc/ -name "passwd"
+	
+# VIEW LOGEED IN USERS	
+w
+	
+# CHECK LOG	tail 
+/var/log/auth.log
+	
+# CALANDER WITH SPECIFIC MONTH	
+cal oct 2020
+	
+## OS DETAILS	
+cat /etc/relcat /etc/os-release
+	
+# CURRENT TIME WITH WHICH USER USING THE SYSTEM	
+uptime
+	
+# CPU INFORMATION	
+lscpu
+	
+# RAM INFORMATION	
+free -h
+	
+# FILE SYSTEM SIZE WITH TYPE	
+df -Th
+	
+# LIST ALL FILES WITH HIDDEN FILES	
+ls -al
+	
+# LIST FILES WITH FILE PERMISSIONS	
+ls -l
+	
+# LIST ALL FILES WITH HIDDEN FILES iN READABLE FORMAT	
+ls -lsah
+	
+# LIST FILES WITH ORDER	
+ls -lX
+	
+# LIST FILES WITH ACESS TIME	
+ls -ult
+	
+# QUICK ONFO ABOUNT COMMANDS	
+whatis ls scp
+	
+## FILE SIZE	
+du -h /var/lib/deluge/Downloads/
+	
+## FOLDER SIZE	
+du -sh 
+	
+## WITH SUBDIRECTORY SIZES + MAIN FOLDER SIZE	
+du -h
+	
+## LIST WITH SIZE	
+du -sh * | sort -hr
+	
+## CREATE MULTIPLE FILES	
+touch myfile{1..5}
+	
+# VIEW PERMISSIONS	
+ls-l myfile
+	
+# ZIP SINGLE FILE	
+zip -r -s 500m myzip myfile.mkv
+	
+# ZIP FOLDER	
+zip -r -s 500m output/myzip source/
+	
+# UZIP FILE	unzip file.zip
+cat cloud_dump.zip.* > cloud_dump.zip
+unzip cloud_dump.zip
+
+# RAR FILE	
+	
+# URAR FILE	
+unrar e 'REV.part01.rar' rev-fgr
+	
+## MAKE TAR FILE	
+tar cvf /home/sam/hrdata_bkp.tar /HRDATA 
+	
+## UNTAR  FILE	
+tar xvf hrdata_bkp.tar
+	
+## MAKE ISO	
+genisoimage -o output_image.iso directory_name du -sh ~/up/ - directory size
+	
+## FILE COPY FORM SVR 2 SVR	scp /home/student/testfile bob@desktop:/home/bob
+rsync –av /home/student/testfile bob@desktop:/home/bob
+	
+## REMOVE SPECIFIC FILE FROM MULTIPLE DIRECTRIES	
+find . -name \*.flac -type f -delete
+	
+	
+## ACCESS WINDOWS PATH FROM LINUX	
+smbclient --user=sl/uchithr%apr@187*#  //slktweb/IT-Software
+	
+	
+	
+	
+	
+## COCKPIT	
+yum install cockpit	
+sudo firewall-cmd --add-service=cockpit	
+sudo firewall-cmd --add-service=cockpit --permanent	
+systemctl enable --now cockpit.socket	
+systemctl start cockpit	
+ss -tulpn | grep :9090	
+	
+firewall-cmd --zone=public --add-port=9090/tcp --permanent	
+firewall-cmd  --reload	
+	
+# MIDNIGHT COMMANDER	
+sudo dnf install mc
+	
+	
+## GUI CLI SWITCH	
+systemctl get-default	
+yum install epel-release	
+yum  groupinstall -y "KDE Plasma Workspaces"	
+yum config-manager --set-enabled powertools	
+	
+sudo systemctl set-default graphical.target	GUI
+sudo systemctl set-default multi-user.target	CLI
+	
+sudo init 6	
+	
+ls -l /etc/systemd/system/default.target	
+	
+	
+#PIP	
+python3 -m pip show mutagen	
+sudo yum install epel-release	
+sudo yum install python-pip	
+sudo pip3 install mutagen	
+	
+	
+	
+#MOUNT DISC	
+sudo blkid	
+sudo mkdir /media/dvd-r	
+sudo mount /dev/sr0 /media/dvd-r	
+tree --du -h | grep G]	
