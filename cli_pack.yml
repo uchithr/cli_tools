@@ -123,8 +123,8 @@ $ ffmpeg -i input.mkv -vn -acodec copy output.aac
 $ ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac output.mp4
 
 # EXTRACT FRAMES
-$ ffmpeg -i input.mp4 -vsync 0       thumb%04d.jpeg       # Output every frame (for 4-5 mins)
-$ ffmpeg -i input.mp4 -vf fps=1      thumb%04d.jpeg         # Output one image every second
+$ ffmpeg -i input.mp4 -vsync 0       thumb%04d.jpeg      # Output every frame (for 4-5 mins)
+$ ffmpeg -i input.mp4 -vf fps=1      thumb%04d.jpeg      # Output one image every second
 $ ffmpeg -i input.mp4 -vf fps=1/600  thumb%04d.jpeg      # Output one image every 10 minutes (600 sec)  (increment 150/600 screen rec)
 
 ##  SOURCE COMPARISON
