@@ -1,15 +1,18 @@
-	/root/var - contains linux log files
+
+# LOG FILES LOCATION
+/root/var
 	
-	psaux
-	top
-	htop
-	pkill -KILL -U samf
-	
-	fdisk -l
-	lsblk -f
-	watch -sh /source
-	
-	tree --du -h | grep G]
+# Monitor Commands	
+psaux
+top
+htop
+pkill -KILL -U samf
+
+
+fdisk -l
+lsblk -f
+watch -sh /source
+tree --du -h | grep G]
 	
 	
 	
