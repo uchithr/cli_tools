@@ -135,6 +135,34 @@ sudo setfacl -R -m g:hrgrp:rwx /HRDATA ## For existing files
 sudo setfacl -m g:hrgrp:rwx /HRDATA ## For new files
 
 
+
+## FILE COMPRESSIONS ##
+
+<>p4txz!p
+
+tar cvzf - test | split --bytes=15MB - name.tar.gz. [work]
+
+tar xz name.tar.gz.
+
+# ENCRYPT
+tar -czf - test | split --bytes=15MB | openssl enc -e -aes256 -out tarball.tar.gz.
+
+# DECRYPT
+openssl enc -d -aes256 -in tarball.tar.gz.* | tar xz -C /root/Desktop/out/
+-------------
+# TO tar + gpg + split
+$ tar -cJvpf - test | gpg --symmetric --cipher-algo aes256 | split -d -b 10MB - name.tar.xz.gpg. 
+
+# TO DECRYPT:
+$ cat outputfile.tar.xz.gpg.* | gpg -d | tar -xJvpf -
+
+cat filelist.txt | xargs -I % cp /path/to/source/folder/% /path/to/destination/folder/
+for /f "delims=" %i in (filelist.txt) do copy "C:\path\to\source\folder\%i" "C:\path\to\destination\folder\"
+
+
+
+
+
 #### APACHE ####
 sudo mkdir /web/site_1 -p
 
