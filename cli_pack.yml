@@ -181,6 +181,23 @@ ffmpeg -i INPUT -vf vflip -c:a copy OUTPUT  {vflip }
 # ASPECT RATIO
 $ ffmpeg -i input.mp4 -vcodec copy -acodec copy -aspect x:y output.mp4
 
+
+# AUDIO MAP  
+
+Check which streams exists in your file. You should see something like this:
+
+ffmpeg -i gog.mkv -f ffmetadata - 2>&1 | grep Stream  ## OR ##  ffmpeg -i file.mp4
+
+Stream #0.0: Video: mpeg4, yuv420p, 720x304 [PAR 1:1 DAR 45:19], 23.98 tbr, 23.98 tbn, 23.98 tbc
+Stream #0.1: Audio: ac3, 48000 Hz, 5.1, s16, 384 kb/s
+Stream #0.2: Audio: ac3, 48000 Hz, 5.1, s16, 384 kb/s
+
+Then run:
+
+ffmpeg -i file.mp4 -map 0:0 -map 0:2 -acodec copy -vcodec copy new_file.mp4 
+
+to copy video stream and 2nd audio stream to new_file.mp4:
+
 # HANDBRAKE CLI   ### C:\Users\SLVR\AppData\Roaming\HandBrake
 HandBrakeCLI.exe --preset-import-file "presets.json" -Z "pf" -i input.mkv -o output.mkv
 
