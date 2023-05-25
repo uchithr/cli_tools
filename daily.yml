@@ -33,6 +33,10 @@ find /etc/ -name "passwd"
 # VIEW LOGEED IN USERS	
 w
 
+#  CHECK DNS FORM CMD
+whois slvr.com
+
+
 # CHECK LOG	tail 
 /var/log/auth.log
 
@@ -126,6 +130,7 @@ find . -name \*.flac -type f -delete
 
 ## ACCESS WINDOWS PATH FROM LINUX	
 smbclient --user=sl/uchithr%apr@187*#  //slktweb/IT-Software
+
 
 
 ## COCKPIT	
