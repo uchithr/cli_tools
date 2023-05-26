@@ -94,27 +94,6 @@ touch myfile{1..5}
 # VIEW PERMISSIONS	
 ls-l myfile
 
-# ZIP SINGLE FILE	
-zip -r -s 500m myzip myfile.mkv
-
-# ZIP FOLDER	
-zip -r -s 500m output/myzip source/
-
-# UZIP FILE	unzip file.zip
-cat cloud_dump.zip.* > cloud_dump.zip
-unzip cloud_dump.zip
-
-# RAR FILE	
-
-# URAR FILE	
-unrar e 'REV.part01.rar' rev-fgr
-
-## MAKE TAR FILE	
-tar cvf /home/sam/hrdata_bkp.tar /HRDATA 
-
-## UNTAR  FILE	
-tar xvf hrdata_bkp.tar
-
 
 ## MAKE ISO	
 genisoimage -o output_image.iso directory_name du -sh ~/up/ - directory size
