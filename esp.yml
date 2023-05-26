@@ -136,7 +136,35 @@ sudo setfacl -m g:hrgrp:rwx /HRDATA ## For new files
 
 
 
-## FILE COMPRESSIONS ##
+
+
+
+################################################################################################################################################################################################
+#### FILE COMPRESSION
+################################################################################################################################################################################################
+
+# ZIP SINGLE FILE	
+zip -r -s 500m myzip myfile.mkv
+
+# ZIP FOLDER	
+zip -r -s 500m output/myzip source/
+
+# UZIP FILE	unzip file.zip
+cat cloud_dump.zip.* > cloud_dump.zip
+unzip cloud_dump.zip
+
+# RAR FILE	
+
+# URAR FILE	
+unrar e 'REV.part01.rar' rev-fgr
+
+## MAKE TAR FILE	
+tar cvf /home/sam/hrdata_bkp.tar /HRDATA 
+
+## UNTAR  FILE	
+tar xvf hrdata_bkp.tar
+
+####___________
 
 <>p4txz!p
 
@@ -161,9 +189,10 @@ for /f "delims=" %i in (filelist.txt) do copy "C:\path\to\source\folder\%i" "C:\
 
 
 
+################################################################################################################################################################################################
+#### APACHE
+################################################################################################################################################################################################
 
-
-#### APACHE ####
 sudo mkdir /web/site_1 -p
 
 sudo touch index.html
@@ -233,66 +262,12 @@ curl server.example.com
 
 
 
-#### BASH ####
-vim usage_script.sh
-
-#!/bin/bash
-
-echo ""
-echo "MEMORY USAGE"
-/usr/bin/free -h -l -t
-echo ""
 
 
-echo "MEMORY STATS"
-/usr/bin/vmstat
-echo ""
+################################################################################################################################################################################################
+#### CRONTAB
+###############################################################################################################################################################################################
 
-
-echo "HDD SPACE"
-/usr/bin/df -h
-echo ""
-
-chmod +x usage_script.sh
-./usage_script.sh
-
-which yum
-/bin/yum
-
-which systemctl
-/bin/systemctl
-
-which firewall-cmd
-/bin/firewall-cmd
-
-vim apache_deploy.sh
-
-#!/bin/bash
-
-echo ""
-echo "APACHE INSTALLING"
-/bin/yum install httpd httpd-manual -y
-echo ""
-
-
-echo ""
-echo "APACHE SERVICE STARTING"
-/bin/systemctl enable httpd.service
-/bin/systemctl start httpd.service
-echo ""
-
-echo ""
-echo "FIREWALL RULES APPLYING"
-/bin/firewall-cmd --permanent --add-service=http
-/bin/firewall-cmd --reload
-echo ""
-
-
-chmod +x apache_deploy.sh
-./apache_deploy.sh
-
-
-#### CRONTAB ####
 crontab -l
 
 timedatectl
@@ -313,7 +288,10 @@ crontab -l
 00 09 * * * cp /home/sam/usage_script.sh /home/sam/HRDATA/
 
 
-#### LVM ####
+################################################################################################################################################################################################
+#### LVM
+################################################################################################################################################################################################
+
 sudo fdisk /dev/vdb
 
 
@@ -419,7 +397,9 @@ vgextend –L +600M /dev/vdb1/myvg1
 lvextend –L +200M /dev/vdb1/myvg1-mylv1
 
 
-LDAP
+################################################################################################################################################################################################
+#### LDAP
+################################################################################################################################################################################################
 sssd krb5-workstation authconfig-gtk 🡪 logout 🡪 ssh root server –X
 LDAP BASE DN : dc=example,dc=com || LDAP Server : classroom.example.com
 
@@ -429,22 +409,30 @@ authconfig-gtk ssh ldapuser7@localhost
 
 
 
-iSCSI
+
+
+################################################################################################################################################################################################
+#### iSCSI
+################################################################################################################################################################################################
+
 🡪 LVM 🡪 targetcli pack 🡪 service 🡪 firewall port 3260/tcp 🡪 targetcli configs 🡪 initiator
 Client fstab /mount xfs _netdev 🡪 iscsiadm 🡪 logout
 
 
-NFS
+################################################################################################################################################################################################
+#### NFS
+################################################################################################################################################################################################
+
 service🡪 chown nfsnobody /my_nfs 🡪 vim /etc/exports [my_nfs x.x.x.x/24](rw sync)
 Client mkdir /mnt/nfs_docs 🡪fstab server7:/ mnt/nfs_docs nfs defaults 🡪 mount
 
 
-SAMBA
-samba samba-client 🡪 service+firewall 🡪 mkdir /smb_sahre context type 🡪configs
-Client cifs-utils samba-client [income ]fstab cifs credentials=mysec
 
 
-MARIA DB
+
+################################################################################################################################################################################################
+#### MARIA DB
+################################################################################################################################################################################################
 mariadb mariadb-client 🡪 service+firewall 🡪 mysql_secure_installation
 mysql -u root –p
 
@@ -453,9 +441,14 @@ Client mariadb-client 🡪 service+firewall
 show databases;
 
 
+################################################################################################################################################################################################
+#### SAMBA
+################################################################################################################################################################################################
+
+samba samba-client 🡪 service+firewall 🡪 mkdir /smb_sahre context type 🡪configs
+Client cifs-utils samba-client [income ]fstab cifs credentials=mysec
 
 
-#### SAMBA ####
 # SAMBA UTILS
 $ dnf install samba samba-common samba-client
 
@@ -551,8 +544,10 @@ $ dnf install samba-client
 $ smbclient ‘192.168.58.102\private’ -U smbuser
 
 
+################################################################################################################################################################################################
+#### WEBMIN | https://localhost:10000
+################################################################################################################################################################################################
 
-## WEBMIN   | https://localhost:10000
 
 # DEPENDENCIES
 sudo yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect
@@ -581,7 +576,7 @@ sudo webmin passwd weminuser
 sudo /etc/webmin/restart OR  sudo systemctl restart webmin
 
 
-
+###############################################################################################################################################################################
 
 #### FOOBAR WINE ####
 sudo dnf install epel-release
