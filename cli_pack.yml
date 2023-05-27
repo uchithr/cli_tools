@@ -453,6 +453,12 @@ winecfg
 --no-loose-crop
 
 
+#### CLOUDSHELL
+https://shell.cloud.google.com/?hl=en_US&fromcloudshell=true&show=ide%2Cterminal&pli=1
+ 
+docker run -p 6070:80 dorowu/ubuntu-desktop-lxde-vnc 
+
+pip install unzip
 
 
 
