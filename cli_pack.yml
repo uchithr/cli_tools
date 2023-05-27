@@ -460,6 +460,16 @@ docker run -p 6070:80 dorowu/ubuntu-desktop-lxde-vnc
 
 pip install unzip
 
+## MEGABASTRED
+
+sudo apt-get install wget
+sudo apt-get install unzip
+
+wget https://github.com/tonikelope/megabasterd/releases/download/v7.49/MegaBasterdLINUX_7.49_portable.zip
+
+
+unzip MegaBasterdLINUX_7.49_portable.zip
+
 
 
 ####################################################################################################
